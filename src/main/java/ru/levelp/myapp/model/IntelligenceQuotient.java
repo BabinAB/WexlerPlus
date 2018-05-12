@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Supplier {
+public class IntelligenceQuotient {
     @Id
     @GeneratedValue
     private int id;
@@ -13,7 +13,7 @@ public class Supplier {
     private String name;
 
     @OneToMany
-    private List<Part> parts;
+    private List<Patient> patients;
 
     public int getId() {
         return id;
@@ -31,11 +31,11 @@ public class Supplier {
         this.name = name;
     }
 
-    public List<Part> getParts() {
-        return parts;
+    public List<Patient> getPatients() {
+        return patients;
     }
 
-    public void setParts(List<Part> parts) {
-        this.parts = parts;
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
     }
 }

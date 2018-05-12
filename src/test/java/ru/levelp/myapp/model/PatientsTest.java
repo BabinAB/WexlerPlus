@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 
 import static org.junit.Assert.assertNotNull;
 
-public class PartsTest {
+public class PatientsTest {
     private EntityManagerFactory emf;
     private EntityManager em;
 
@@ -27,11 +27,11 @@ public class PartsTest {
     }
 
     @Test
-    public void testCreatePart() throws Throwable {
-        Part part = new Part("0000-1", "My part");
+    public void testCreatePatient() throws Throwable {
+        Patient patient = new Patient("0000-1", "Tony Braxton");
         em.getTransaction().begin();
         try {
-            em.persist(part);
+            em.persist(patient);
         } catch (Throwable t) {
             em.getTransaction().rollback();
             throw t;
@@ -41,16 +41,16 @@ public class PartsTest {
     }
 
     @Test
-    public void testCreatePartWithSupplier() throws Throwable {
-        Part part = new Part("0000-1", "My part");
-        Supplier s = new Supplier();
-        s.setName("some company");
-        part.setSupplier(s);
+    public void testCreatePatientWithIQ() throws Throwable {
+        Patient patient = new Patient("0000-1", "Donald Trump");
+        IntelligenceQuotient s = new IntelligenceQuotient();
+        s.setName("Wexler");
+        patient.setIntelligenceQuotient(s);
 
         em.getTransaction().begin();
         try {
             em.persist(s);
-            em.persist(part);
+            em.persist(patient);
         } catch (Throwable t) {
             em.getTransaction().rollback();
             throw t;
@@ -58,8 +58,8 @@ public class PartsTest {
             em.getTransaction().commit();
         }
 
-        Part found = em.find(Part.class, part.getId());
+        Patient found = em.find(Patient.class, patient.getId());
         assertNotNull(found);
-        assertNotNull(found.getSupplier());
+        assertNotNull(found.getIntelligenceQuotient());
     }
 }
