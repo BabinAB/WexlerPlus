@@ -14,7 +14,7 @@ public class Patient {
     @Column
     private String fullName;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private IntelligenceQuotient intelligenceQuotient;
 
     public Patient() {

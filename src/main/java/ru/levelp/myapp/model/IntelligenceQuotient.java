@@ -12,7 +12,7 @@ public class IntelligenceQuotient {
     @Column
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Patient> patients;
 
     public int getId() {

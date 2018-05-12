@@ -49,13 +49,11 @@ public class PatientsTest {
 
         em.getTransaction().begin();
         try {
-            em.persist(s);
             em.persist(patient);
+            em.getTransaction().commit();
         } catch (Throwable t) {
             em.getTransaction().rollback();
             throw t;
-        } finally {
-            em.getTransaction().commit();
         }
 
         Patient found = em.find(Patient.class, patient.getId());
